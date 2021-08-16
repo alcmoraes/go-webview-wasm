@@ -7,9 +7,6 @@ go_library(
     ],
     importpath = "go-webview-wasm/wasm",
     visibility = ["//visibility:private"],
-    deps = [
-        "//js/canvas:go_default_library",
-    ],
 )
 
 go_binary(

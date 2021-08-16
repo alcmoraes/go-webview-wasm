@@ -38,30 +38,30 @@ go_binary(
 )
 
 # use lorca
-# go_binary(
-#     name = "webview-wasm",
-#     embed = [":go_default_library"],
-#     goarch = "amd64",
-#     goos = "darwin",
-#     visibility = ["//visibility:public"],
-# )
+go_binary(
+    name = "webview-wasm",
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "darwin",
+    visibility = ["//visibility:public"],
+)
 
 # # use webview
-# go_binary(
-#     name = "asteroids_darwin",
-#     cgo = True,
-#     embed = [":go_default_library"],
-#     goarch = "amd64",
-#     goos = "darwin",
-#     pure = "off",
-#     visibility = ["//visibility:public"],
-# )
+go_binary(
+    name = "webview-wasm-darwin",
+    cgo = True,
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "darwin",
+    pure = "off",
+    visibility = ["//visibility:public"],
+)
 
 # # use lorca
-# go_binary(
-#     name = "asteroids_windows",
-#     embed = [":go_default_library"],
-#     goarch = "amd64",
-#     goos = "windows",
-#     visibility = ["//visibility:public"],
-# )
+go_binary(
+    name = "webview-wasm-windows",
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "windows",
+    visibility = ["//visibility:public"],
+)
