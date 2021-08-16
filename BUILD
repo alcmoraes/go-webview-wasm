@@ -28,27 +28,30 @@ go_library(
     deps = ["//desktop:go_default_library"],
 )
 
+# Linux
 # use lorca
 go_binary(
-    name = "webview-wasm-linux",
+    name = "webview-wasm",
     embed = [":go_default_library"],
     goarch = "amd64",
     goos = "linux",
     visibility = ["//visibility:public"],
 )
 
+# OSX
 # use lorca
 go_binary(
-    name = "webview-wasm",
+    name = "webview-wasm-osx",
     embed = [":go_default_library"],
     goarch = "amd64",
     goos = "darwin",
     visibility = ["//visibility:public"],
 )
 
-# # use webview
+# OSX Native
+# use webview
 go_binary(
-    name = "webview-wasm-darwin",
+    name = "webview-wasm-osx-cocoa",
     cgo = True,
     embed = [":go_default_library"],
     goarch = "amd64",
@@ -57,7 +60,8 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-# # use lorca
+# Windows
+# use lorca
 go_binary(
     name = "webview-wasm-windows",
     embed = [":go_default_library"],
