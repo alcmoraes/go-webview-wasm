@@ -7,8 +7,8 @@ import (
 func main() {
 	config := &desktop.Config{
 		WasmBin: WASM_BIN,
-		Width:   1280,
-		Height:  720 + 20, // add 20 for the top bar
+		Width:   480,
+		Height:  620 + 20,
 		Title:   "GoWebview",
 	}
 	desktop.CreateDesktopApp(config)

@@ -15,6 +15,7 @@ func CreateDesktopApp(config *Config) {
 	indexHTML := STATIC_STRINGS["desktop/index.html"]
 	wasmEXEC := STATIC_STRINGS["desktop/wasm_exec.js"]
 	initJS := STATIC_STRINGS["desktop/init.js"]
+	reactAPP := STATIC_STRINGS["desktop/index.js"]
 
 	debug := true
 	w := webview.New(debug)
@@ -31,6 +32,7 @@ func CreateDesktopApp(config *Config) {
 	w.Bind("getWASM", func() []byte { return config.WasmBin })
 	w.Init(wasmEXEC)
 	w.Init(initJS)
+	w.Init(reactAPP)
 
 	w.Run()
 }

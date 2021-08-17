@@ -36,6 +36,7 @@ go_binary(
     goarch = "amd64",
     goos = "linux",
     visibility = ["//visibility:public"],
+    pure = "on",
 )
 
 # OSX

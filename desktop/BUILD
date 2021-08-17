@@ -4,6 +4,8 @@ go_embed_data(
     name = "static_files",
     srcs = [
         ":index.html",
+        ":index.js",
+        ":index.css",
         ":init.js",
         ":wasm_exec.js",
     ],

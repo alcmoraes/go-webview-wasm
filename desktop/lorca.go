@@ -15,6 +15,8 @@ func CreateDesktopApp(config *Config) {
 	indexHTML := STATIC_STRINGS["desktop/index.html"]
 	wasmEXEC := STATIC_STRINGS["desktop/wasm_exec.js"]
 	initJS := STATIC_STRINGS["desktop/init.js"]
+	reactAPP := STATIC_STRINGS["desktop/index.js"]
+	reactCSS := STATIC_STRINGS["desktop/index.css"]
 
 	url := fmt.Sprintf(
 		"data:text/html,%s",
@@ -28,6 +30,12 @@ func CreateDesktopApp(config *Config) {
 	}
 	defer ui.Close()
 
+	ui.Eval(fmt.Sprintf(`
+		styleNode = document.createElement("style");
+		styleNode.innerHTML = '%s';
+		document.head.appendChild(styleNode);
+	`, reactCSS))
+
 	// Create a JS function that returns the WASM binary in base64
 	ui.Bind("getWASM", func() []byte { return config.WasmBin })
 
@@ -36,6 +44,9 @@ func CreateDesktopApp(config *Config) {
 
 	// Call the initial JS functions to load the WASM
 	ui.Eval(initJS)
+
+	// Call the react script
+	ui.Eval(reactAPP)
 
 	// Wait until UI window is closed
 	<-ui.Done()
